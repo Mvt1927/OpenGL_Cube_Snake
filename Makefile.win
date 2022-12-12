@@ -1,0 +1,28 @@
+# Project: Cube Snake
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe -D__DEBUG__
+CC       = gcc.exe -D__DEBUG__
+WINDRES  = windres.exe
+OBJ      = main.o
+LINKOBJ  = main.o
+LIBS     = -L"E:/Cpp_compile/MinGW32/lib" -static-libgcc -mwindows -lopengl32 -lglu32 -lfreeglut -lSDL2 -lSDL2_mixer -g3
+INCS     = -I"E:/Cpp_compile/MinGW32/include"
+CXXINCS  = -I"E:/Cpp_compile/MinGW32/include" -I"E:/Cpp_compile/MinGW32/lib/gcc/mingw32/4.7.2/include/c++"
+BIN      = "Cube Snake.exe"
+CXXFLAGS = $(CXXINCS) -g3
+CFLAGS   = $(INCS) -g3
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CC) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+main.o: main.c
+	$(CC) -c main.c -o main.o $(CFLAGS)
